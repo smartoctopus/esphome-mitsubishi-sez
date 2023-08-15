@@ -2,7 +2,7 @@
 Custom component to support Mitsubishi SEZ-KD as climate IR in ESPhome
 
 ## Using this component
-Clone/download this repository into '/config/esphome/esphome-climate-mhi' and add to your esphome configuration:
+Add to your esphome configuration:
 ```
 external_components:
   source: github://smartoctopus/esphome-mitsubishi-sez
@@ -18,3 +18,6 @@ climate:
   - platform: mitsubishi_sez
     name: "AC"
 ```
+
+## Credits
+This component is based on [esphome-climate-mhi](https://github.com/Dennis-Q/esphome-climate-mhi). The actual protocol comes from [arduino-heatpumpir](https://github.com/ToniA/arduino-heatpumpir).
