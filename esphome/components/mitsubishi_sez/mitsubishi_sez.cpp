@@ -137,7 +137,7 @@ bool MitsubishiSEZClimate::on_receive(remote_base::RemoteReceiveData data)
     return true;
 }
 
-void MhiClimate::transmit_state()
+void MitsubishiSEZClimate::transmit_state()
 {
     // Thanks to: https://github.com/ToniA/arduino-heatpumpir/blob/489f6eaa434096aa82ef8195055b4b7d99a2394e/MitsubishiSEZKDXXHeatpumpIR.cpp#L77
     uint8_t bytes[MSG_LENGTH] = { 0x23, 0xCB, 0x26, 0x21, 0x00, 0x40, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
@@ -149,7 +149,7 @@ void MhiClimate::transmit_state()
     auto operatingMode = COOL;
     auto powerMode = OFF;
     auto temperature = 19;
-    auto fanSpeed = FAN_AUTO;
+    auto fanSpeed = FAN1;
 
     // ----------------------
     // Assign the values
@@ -195,7 +195,7 @@ void MhiClimate::transmit_state()
         break;
     case climate::CLIMATE_FAN_AUTO:
     default:
-        fanSpeed = FAN_AUTO;
+        fanSpeed = FAN1;
         break;
     }
 
