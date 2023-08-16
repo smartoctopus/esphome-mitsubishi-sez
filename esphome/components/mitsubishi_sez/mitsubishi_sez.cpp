@@ -1,14 +1,14 @@
 #include "mitsubishi_sez.h"
-#include "cstdint"
 #include "esphome/core/log.h"
+#include <cstdint>
 
 namespace esphome {
 namespace mitsubishi_sez {
 static char const *TAG = "mitsubishi_sez.climate";
 
 // Power
-const uint32_t OFF = 0x00;
-const uint32_t ON = 0x40;
+const uint8_t OFF = 0x00;
+const uint8_t ON = 0x40;
 
 // Operating mode
 const uint8_t AUTO = 0x03;
@@ -147,7 +147,7 @@ void MitsubishiSEZClimate::transmit_state()
     // ----------------------
 
     auto operatingMode = COOL;
-    auto powerMode = OFF;
+    auto powerMode = ON;
     auto temperature = 19;
     auto fanSpeed = FAN1;
 
@@ -203,10 +203,10 @@ void MitsubishiSEZClimate::transmit_state()
     // Assign the bytes
     // ----------------------
 
-    // Power state + operating mode
+    // Power state
     bytes[5] = powerMode;
 
-    // Temperature
+    // Temperature + operating mode
     bytes[6] = ((temperature - 16) << 4) | operatingMode;
 
     // Fan speed
