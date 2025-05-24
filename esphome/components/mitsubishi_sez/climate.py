@@ -9,5 +9,5 @@ MitsubishiSEZClimate = mitsubishi_sez_ns.class_('MitsubishiSEZClimate', climate_
 CONFIG_SCHEMA = climate_ir.climare_ir_with_receiver_schema(MitsubishiSEZClimate)
 
 
-def to_code(config):
+async def to_code(config):
     await climate_ir.new_climate_ir(config)
